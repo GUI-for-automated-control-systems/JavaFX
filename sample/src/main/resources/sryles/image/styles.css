@@ -1,0 +1,4 @@
+.list-cell:selected {
+    -fx-background-color:  #104746;
+    -fx-text-fill: #ffffff; /* Optional: Set the text color for the selected item */
+}
