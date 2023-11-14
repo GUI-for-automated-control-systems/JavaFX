@@ -46,7 +46,7 @@
       </AnchorPane>
       <AnchorPane layoutX="-9.0" prefHeight="520.0" prefWidth="231.0" style="-fx-background-color: #493A2F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-9.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="btn1" layoutX="8.8" layoutY="58.0" mnemonicParsing="false" onAction="#handleButtonAction" pickOnBounds="false" prefHeight="40.0" prefWidth="221.0" styleClass="btn1" stylesheets="@my.css" text="Страница 1" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="0.0">
+            <Button fx:id="btn1" layoutX="8.8" layoutY="58.0" mnemonicParsing="false" onAction="#handleButtonAction" pickOnBounds="false" prefHeight="40.0" prefWidth="221.0" style="-fx-border-radius: 10;" styleClass="btn1" stylesheets="@my.css" text="Страница 1" textFill="WHITE" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font size="14.0" />
                </font></Button>

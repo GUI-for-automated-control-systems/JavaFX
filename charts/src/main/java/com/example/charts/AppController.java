@@ -6,11 +6,16 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+
+import java.sql.*;
+
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class AppController {
@@ -51,45 +56,53 @@ public class AppController {
     @FXML
     public void handleButtonAction(ActionEvent event){
         if (event.getSource() == btn1){
-            CategoryAxis xAxis = new CategoryAxis();
-            xAxis.setLabel("Field 1");
+            String url = "jdbc:mysql://localhost/student_list";
+            Connection connection = null;
+            Statement statement = null;
 
-            NumberAxis yAxis = new NumberAxis();
-            yAxis.setLabel("Field 2");
+            try{
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                connection = DriverManager.getConnection(url, "root", "");
+                statement = connection.createStatement();
 
-            BarChart<String, Integer> barChart =new BarChart(xAxis, yAxis);
+                String query = "SELECT FirstName, id FROM student_list;";
 
-            XYChart.Series data = new XYChart.Series();
-            data.setName("Production");
+                ResultSet resultSet = statement.executeQuery(query);
+                ArrayList<String> emp_no = new ArrayList<String>();
+                ArrayList<Integer> birth_date = new ArrayList<Integer>();
 
-            data.getData().add(new XYChart.Data<>("Example 1", 1));
-            data.getData().add(new XYChart.Data<>("Example 2", 3));
-            data.getData().add(new XYChart.Data<>("Example 3", 4));
-            data.getData().add(new XYChart.Data<>("Example 32", 5));
-            data.getData().add(new XYChart.Data<>("Example 12", 1));
-            data.getData().add(new XYChart.Data<>("Example 55", 9));
-            data.getData().add(new XYChart.Data<>("Example 312", 6));
-            data.getData().add(new XYChart.Data<>("Example 311", 3));
-            data.getData().add(new XYChart.Data<>("Example 5", 2));
 
-            XYChart.Series data2 = new XYChart.Series();
-            data2.setName("Concurrent");
 
-            data2.getData().add(new XYChart.Data<>("Example 1", 1));
-            data2.getData().add(new XYChart.Data<>("Example 2", 3));
-            data2.getData().add(new XYChart.Data<>("Example 3", 4));
-            data2.getData().add(new XYChart.Data<>("Example 32", 5));
-            data2.getData().add(new XYChart.Data<>("Example 12", 1));
-            data2.getData().add(new XYChart.Data<>("Example 55", 9));
-            data2.getData().add(new XYChart.Data<>("Example 312", 6));
-            data2.getData().add(new XYChart.Data<>("Example 311", 3));
-            data2.getData().add(new XYChart.Data<>("Example 5", 2));
+                while (resultSet.next()){
+                    emp_no.add(resultSet.getString(1));
+                    birth_date.add(resultSet.getInt(2));
 
-            barChart.getData().add(data);
-            barChart.getData().add(data2);
-            firstView.setCenter(barChart);
+                }
+                resultSet.close();
+
+                CategoryAxis aAxis = new CategoryAxis();
+                aAxis.setLabel("FirstName");
+
+                NumberAxis bAxis = new NumberAxis();
+                bAxis.setLabel("id");
+
+                BarChart barChart = new BarChart(aAxis, bAxis);
+
+                XYChart.Series dataSeries = new XYChart.Series();
+                dataSeries.setName("Emp table");
+
+                for (int i = 0; i < emp_no.size(); i++){
+                    dataSeries.getData().add(new XYChart.Data<>(emp_no.get(i), birth_date.get(i)));
+                }
+                barChart.getData().add(dataSeries);
+                firstView.setCenter(barChart);
+
+
+            } catch (ClassNotFoundException | SQLException e) {
+                throw new RuntimeException(e);
+            }
+
             firstView.toFront();
-
         } else if (event.getSource() == btn2){
             secondView.toFront();
         } else if (event.getSource() == bnt3){
