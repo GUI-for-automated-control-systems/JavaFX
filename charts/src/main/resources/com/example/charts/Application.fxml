@@ -10,13 +10,12 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="843.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.charts.AppController">
    <children>
       <AnchorPane layoutX="222.0" prefHeight="520.0" prefWidth="622.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="-1.7999999999999545" AnchorPane.topAnchor="0.0">
          <children>
-            <Pane fx:id="secondView" prefHeight="520.0" prefWidth="622.0" style="-fx-background-color: #A19574;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-0.1999999999999318" AnchorPane.topAnchor="0.0" />
+            <BorderPane fx:id="secondView" prefHeight="520.0" prefWidth="622.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-0.1999999999999318" AnchorPane.topAnchor="0.0" />
             <Pane fx:id="thirdView" prefHeight="520.0" prefWidth="622.0" style="-fx-background-color: #897D5D;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-0.1999999999999318" AnchorPane.topAnchor="0.0" />
             <BorderPane fx:id="firstView" prefHeight="520.0" prefWidth="622.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-0.1999999999999318" AnchorPane.topAnchor="0.0">
                <top>
@@ -29,24 +28,30 @@
                               <MenuItem mnemonicParsing="false" text="Close" />
                         </items>
                       </Menu>
+                        <Menu mnemonicParsing="false" text="Edit">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Update" />
+                              <MenuItem mnemonicParsing="false" text="Sort" />
+                              <MenuItem mnemonicParsing="false" text="Close" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="File">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Update" />
+                              <MenuItem mnemonicParsing="false" text="Sort" />
+                              <MenuItem mnemonicParsing="false" text="Close" />
+                           </items>
+                        </Menu>
                     </menus>
                   </MenuBar>
                </top>
-               <bottom>
-                  <Pane prefHeight="111.0" prefWidth="622.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data from: Local storage" />
-                        <Text boundsType="LOGICAL_VERTICAL_CENTER" layoutX="14.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="“Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit…” ~ “There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain…”" textOrigin="TOP" wrappingWidth="601.0950317382812" />
-                     </children>
-                  </Pane>
-               </bottom>
             </BorderPane>
             <Pane fx:id="fourthView" prefHeight="520.0" prefWidth="622.0" style="-fx-background-color: #716549;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-0.1999999999999318" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="-9.0" prefHeight="520.0" prefWidth="231.0" style="-fx-background-color: #493A2F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-9.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="btn1" layoutX="8.8" layoutY="58.0" mnemonicParsing="false" onAction="#handleButtonAction" pickOnBounds="false" prefHeight="40.0" prefWidth="221.0" style="-fx-border-radius: 10;" styleClass="btn1" stylesheets="@my.css" text="Страница 1" textFill="WHITE" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="0.0">
+            <Button fx:id="btn1" layoutX="8.8" layoutY="58.0" mnemonicParsing="false" onAction="#handleButtonAction" pickOnBounds="false" prefHeight="40.0" prefWidth="221.0" style="-fx-border-radius: 10;" styleClass="btn1" stylesheets="@my.css" text="Charts from DB" textFill="WHITE" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font size="14.0" />
                </font></Button>
