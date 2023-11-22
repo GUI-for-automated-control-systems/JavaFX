@@ -15,9 +15,9 @@
    <children>
       <AnchorPane layoutX="222.0" prefHeight="520.0" prefWidth="622.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="-1.7999999999999545" AnchorPane.topAnchor="0.0">
          <children>
-            <BorderPane fx:id="secondView" prefHeight="520.0" prefWidth="622.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-0.1999999999999318" AnchorPane.topAnchor="0.0" />
-            <Pane fx:id="thirdView" prefHeight="520.0" prefWidth="622.0" style="-fx-background-color: #897D5D;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-0.1999999999999318" AnchorPane.topAnchor="0.0" />
-            <BorderPane fx:id="firstView" prefHeight="520.0" prefWidth="622.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-0.1999999999999318" AnchorPane.topAnchor="0.0">
+            <BorderPane fx:id="secondView" prefHeight="520.0" prefWidth="622.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-0.1999999999999318" AnchorPane.topAnchor="0.0" />
+            <Pane fx:id="thirdView" prefHeight="520.0" prefWidth="622.0" style="-fx-background-color: #4D6F58;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-0.1999999999999318" AnchorPane.topAnchor="0.0" />
+            <BorderPane fx:id="firstView" prefHeight="520.0" prefWidth="622.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-0.1999999999999318" AnchorPane.topAnchor="0.0">
                <top>
                   <MenuBar style="-fx-background-color: #f0f0f0;" BorderPane.alignment="CENTER">
                     <menus>
@@ -46,16 +46,16 @@
                   </MenuBar>
                </top>
             </BorderPane>
-            <Pane fx:id="fourthView" prefHeight="520.0" prefWidth="622.0" style="-fx-background-color: #716549;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-0.1999999999999318" AnchorPane.topAnchor="0.0" />
+            <BorderPane fx:id="fourthView" prefHeight="520.0" prefWidth="622.0" style="-fx-background-color: #375640;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-0.1999999999999318" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="-9.0" prefHeight="520.0" prefWidth="231.0" style="-fx-background-color: #493A2F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-9.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="-9.0" prefHeight="520.0" prefWidth="231.0" style="-fx-background-color: #184248;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-9.0" AnchorPane.topAnchor="0.0">
          <children>
             <Button fx:id="btn1" layoutX="8.8" layoutY="58.0" mnemonicParsing="false" onAction="#handleButtonAction" pickOnBounds="false" prefHeight="40.0" prefWidth="221.0" style="-fx-border-radius: 10;" styleClass="btn1" stylesheets="@my.css" text="Charts from DB" textFill="WHITE" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font size="14.0" />
                </font></Button>
-            <Button fx:id="btn2" layoutX="8.8" layoutY="98.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="221.0" stylesheets="@my.css" text="Страница 2" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="0.0">
+            <Button fx:id="btn2" layoutX="8.8" layoutY="98.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="221.0" stylesheets="@my.css" text="Iterator" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font size="14.0" />
                </font></Button>

@@ -1,17 +1,17 @@
 .button{
-    -fx-background-color:#493A2F;
+    -fx-background-color:#184248;
     -fx-background-radius: 0;
     -fx-text-fill: #ffffff
 }
 
 .button:hover{
-    -fx-background-color:#5C4D3F;
+    -fx-background-color:#28565B;
     -fx-transition: background-color 0.3s, text-fill 0.3s;
     -fx-text-fill: #ffffff
 }
 
 .button:focused {
-    -fx-background-color:#3C2E25;
+    -fx-background-color:#0C353C;
      -fx-transition: background-color 0.3s, text-fill 0.3s;
 
 }

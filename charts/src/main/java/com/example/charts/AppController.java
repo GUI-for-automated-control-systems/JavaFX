@@ -30,8 +30,7 @@ public class AppController {
     @FXML
     private URL location;
 
-    @FXML
-    private BarChart<String, Integer> barChart;
+
 
     @FXML
     public Text message;
@@ -53,7 +52,7 @@ public class AppController {
     private BorderPane firstView;
 
     @FXML
-    private Pane fourthView;
+    private BorderPane fourthView;
 
     @FXML
     private BorderPane secondView;
@@ -77,14 +76,14 @@ public class AppController {
                 String query = "SELECT x, y FROM data;";
 
                 ResultSet resultSet = statement.executeQuery(query);
-                ArrayList<String> emp_no = new ArrayList<String>();
-                ArrayList<Integer> birth_date = new ArrayList<Integer>();
+                ArrayList<String> x = new ArrayList<String>();
+                ArrayList<Integer> y = new ArrayList<Integer>();
 
 
 
                 while (resultSet.next()){
-                    emp_no.add(resultSet.getString(1));
-                    birth_date.add(resultSet.getInt(2));
+                    x.add(resultSet.getString(1));
+                    y.add(resultSet.getInt(2));
 
                 }
                 resultSet.close();
@@ -96,14 +95,15 @@ public class AppController {
                 bAxis.setLabel("y");
 
                 LineChart chart = new LineChart(aAxis, bAxis);
+
                 chart.setTitle("График данных из mysql");
 
 
                 XYChart.Series dataSeries = new XYChart.Series();
                 dataSeries.setName("Chart");
 
-                for (int i = 0; i < emp_no.size(); i++){
-                    dataSeries.getData().add(new XYChart.Data<>(emp_no.get(i), birth_date.get(i)));
+                for (int i = 0; i < x.size(); i++){
+                    dataSeries.getData().add(new XYChart.Data<>(x.get(i), y.get(i)));
                 }
                 chart.getData().add(dataSeries);
 
@@ -133,14 +133,16 @@ public class AppController {
             XYChart.Series<Number, Number> series = new XYChart.Series<>();
             series.setName("Values");
 
-            LineChart<Number, Number> chart = new LineChart<>(xAxis, yAxis);
+            AreaChart<Number, Number> chart = new AreaChart<>(xAxis, yAxis);
             chart.setAnimated(false);
             chart.getData().add(series);
+
+            chart.setTitle("Dummy data");
 
             Thread updateThread = new Thread(() -> {
                 while (true) {
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep(50);
                         Platform.runLater(() -> series.getData().add(new XYChart.Data<>(tick.incrementAndGet(), (int) (Math.random() * 100))));
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
@@ -154,6 +156,8 @@ public class AppController {
         } else if (event.getSource() == bnt3){
             thirdView.toFront();
         } else if (event.getSource() == btn4){
+            Text text = new Text("todo page 4");
+            firstView.setBottom(text);
             fourthView.toFront();
         }
     }
