@@ -12,8 +12,8 @@ public class AppStarter extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(AppStarter.class.getResource("View/view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("JavaFX");
-        stage.setResizable(false);
+        stage.setTitle("Visual Impulse");
+//        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
