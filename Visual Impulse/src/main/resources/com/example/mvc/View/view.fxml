@@ -4,18 +4,20 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="586.0" prefWidth="756.0" stylesheets="@style/my.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mvc.Controller.AppController">
    <children>
       <BorderPane fx:id="borderPane" prefHeight="466.0" prefWidth="600.0" AnchorPane.bottomAnchor="-0.39999999999997726" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <MenuBar fx:id="menue" BorderPane.alignment="CENTER">
+            <MenuBar fx:id="menue" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
               <menus>
                 <Menu mnemonicParsing="false" text="File">
                   <items>
@@ -37,21 +39,50 @@
             </MenuBar>
          </top>
          <bottom>
-            <VBox prefHeight="96.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+            <VBox prefHeight="80.0" prefWidth="756.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
                <children>
-                  <HBox prefHeight="27.0" prefWidth="756.0" />
-                  <HBox prefHeight="46.0" prefWidth="609.0">
+                  <HBox prefHeight="7.0" prefWidth="756.0">
                      <children>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="  X: " />
-                        <TextField fx:id="xValue" />
+                        <HBox prefHeight="7.0" prefWidth="370.0">
+                           <children>
+                              <Separator prefHeight="20.0" prefWidth="176.0" />
+                           </children>
+                        </HBox>
+                        <Separator prefHeight="10.0" prefWidth="1143.0" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="49.0" prefWidth="600.0">
+                  <HBox prefHeight="40.0" prefWidth="756.0">
                      <children>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="  Y: " />
+                        <Text fill="#0b4747" strokeType="OUTSIDE" strokeWidth="0.0" text=" X:" wrappingWidth="21.046875">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></Text>
+                        <TextField prefWidth="150.0" fx:id="xValue" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="23.0" prefWidth="756.0">
+                     <children>
+                        <Text fill="#0b4747" strokeType="OUTSIDE" strokeWidth="0.0" text=" Y: ">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></Text>
                         <TextField fx:id="yValue" />
-                        <Button fx:id="addPoint" mnemonicParsing="false" onAction="#addPointFromFields" text="Add" />
-                        <Button fx:id="addPoint1" mnemonicParsing="false" onAction="#removeAll" text="Rm all" />
+                        <HBox prefHeight="50.0" prefWidth="19.0" />
+                        <Button fx:id="addPoint" mnemonicParsing="false" onAction="#addPointFromFields" prefHeight="32.0" prefWidth="60.0" style="-fx-background-color: #0B4747;" text="Add" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Button>
+                        <HBox prefHeight="50.0" prefWidth="19.0" />
+                        <Button fx:id="addPoint1" mnemonicParsing="false" onAction="#removeAll" prefHeight="33.0" prefWidth="64.0" style="-fx-background-color: #0B4747;" text="Del all" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Button>
+                        <HBox prefHeight="26.0" prefWidth="308.0" />
+                        <Button fx:id="addPoint11" mnemonicParsing="false" onAction="#uploadCouncurrent" prefHeight="42.0" prefWidth="106.0" style="-fx-background-color: #0B4747;" text="Сompare with" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
                      </children>
                   </HBox>
                </children>

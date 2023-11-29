@@ -13,16 +13,20 @@ public class ShowCoordinatesNode extends StackPane {
 
         final Label label = createDataThresholdLabel(x, y);
 
-        setOnMouseEntered(mouseEvent -> {
-            setScaleX(1);
-            setScaleY(1);
-            getChildren().setAll(label);
-            toFront();
+        setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                setScaleX(1);
+                setScaleY(1);
+                getChildren().setAll(label);
+                toFront();
+            }
         });
-        setOnMouseExited(new EventHandler<>() {
+        setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 getChildren().clear();
+                setCursor(Cursor.CROSSHAIR);
             }
         });
     }

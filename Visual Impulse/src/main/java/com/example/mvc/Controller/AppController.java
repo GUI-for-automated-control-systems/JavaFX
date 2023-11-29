@@ -9,13 +9,16 @@ import java.util.Queue;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
+import com.example.mvc.Model.SmoothedChart;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.chart.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -24,9 +27,12 @@ import javafx.stage.Stage;
 public class AppController {
     private final NumberAxis xAxis = new NumberAxis();
     private final NumberAxis yAxis = new NumberAxis();
-    private final StackedAreaChart<Number, Number> mainChart = new StackedAreaChart <>(xAxis, yAxis);
+    private final AreaChart<Number, Number> mainChart = new AreaChart<>(xAxis, yAxis);
     static Queue<XYChart.Data<Number, Number>> dataQueue = new LinkedList<>();
     XYChart.Series<Number, Number> series = new XYChart.Series<>();
+
+    XYChart.Series<Number, Number> newSeries = new XYChart.Series<>();
+
 
 
     @FXML
@@ -77,13 +83,6 @@ public class AppController {
             mainChart.setScaleY(mainChart.getScaleY() * scaleFactor);
         });
 
-        mainChart.setOnMousePressed(event -> {
-            if (event.getClickCount() == 2) {
-                mainChart.setScaleX(mainChart.getScaleX() * 1.9);
-                mainChart.setScaleY(mainChart.getScaleX() * 0.9);
-            }
-        });
-
         borderPane.setCenter(mainChart);
 
         mainChart.setAnimated(false);
@@ -114,20 +113,33 @@ public class AppController {
         updateThread.start();
     }
 
+
+
     public void addPointFromFields(ActionEvent event) {
-        double x = Integer.parseInt(xValue.getText());
-        double y = Integer.parseInt(yValue.getText());
-        dataQueue.add(new XYChart.Data<>(x, y));
+        if (!xValue.getText().isEmpty()  && !yValue.getText().isEmpty() ){
+            double x = Integer.parseInt(xValue.getText());
+            double y = Integer.parseInt(yValue.getText());
+            dataQueue.add(new XYChart.Data<>(x, y));
+        } else System.out.println("nothing to add");
+
 
     }
-    public void removeAll(ActionEvent event) {
-        series.getData().clear();
-        System.out.println(dataQueue);
+    public void removeAll(ActionEvent event) throws InterruptedException {
+        if (!series.getData().isEmpty() || !newSeries.getData().isEmpty()){
+            series.getData().clear();
+            newSeries.getData().clear();
+            Thread.sleep(10);
+            series.getData().add(new XYChart.Data<>(0, 0));
+            newSeries.getData().add(new XYChart.Data<>(0, 0));
+            series.getData().clear();
+            newSeries.getData().clear();
+        } else System.out.println("nothing to delete");
+
     }
 
     public void uploadDAT() throws FileNotFoundException {
         FileChooser inputFile = new FileChooser();
-        inputFile.setInitialDirectory(new File("C:\\Users\\zorin\\OneDrive\\Рабочий стол"));
+        inputFile.setInitialDirectory(new File("C:\\Users\\zorin\\OneDrive\\Рабочий стол\\Data"));
         File selectFile = inputFile.showOpenDialog(new Stage());
 
         if (selectFile != null) {
@@ -149,7 +161,6 @@ public class AppController {
                     System.out.println("Некорректный формат строки: " + line);
                 }
             }
-
             scanner.close();
         }
     }
@@ -170,6 +181,42 @@ public class AppController {
 
         }
     }
+
+    public void uploadCouncurrent(ActionEvent event) throws FileNotFoundException {
+        FileChooser inputFile = new FileChooser();
+        inputFile.setInitialDirectory(new File("C:\\Users\\zorin\\OneDrive\\Рабочий стол"));
+        File selectFile = inputFile.showOpenDialog(new Stage());
+
+        if (selectFile != null) {
+            newSeries.setName("Values");
+            Scanner scanner = new Scanner(selectFile);
+
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+
+                String[] values = line.split("\\s+");
+
+                if (values.length == 2) {
+                    double x = Double.parseDouble(values[0]);
+                    double y = Double.parseDouble(values[1]);
+
+                    System.out.println("x: " + x + ", y: " + y);
+                    newSeries.getData().add(new XYChart.Data<>(x, y));
+                    newSeries.setNode(new ShowCoordinatesNode(x,y));
+                } else {
+                    System.out.println("Некорректный формат строки: " + line);
+                }
+            }
+
+            scanner.close();
+
+            // Добавить новый график к mainChart
+            Platform.runLater(() -> {
+                mainChart.getData().add(newSeries);
+            });
+        }
+    }
+
 }
 
 

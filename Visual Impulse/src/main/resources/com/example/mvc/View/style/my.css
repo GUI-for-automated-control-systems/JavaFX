@@ -29,7 +29,16 @@
     -fx-legend-visible: false;
 }
 
+.button{
 
+     -fx-font-size: 14;
+}
+
+.button:hover{
+    -fx-background-color:#28565B;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+
+}
 
 .chart-plot-background {
     -fx-background-color:transparent;
