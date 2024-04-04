@@ -1,0 +1,21 @@
+.root {
+    -fx-font-family: "Arial", sans-serif;
+}
+
+.chart-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.chart-legend {
+    -fx-font-size: 12px;
+}
+
+.text-area {
+    -fx-font-size: 12px;
+    -fx-control-inner-background: #f8f8f8;
+}
+
+.text-field {
+    -fx-font-size: 12px;
+}
